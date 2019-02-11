@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Todos from './components/Todos'
 import {todos} from './components/data'
+import Game from './components/Game'
+
 import './App.css';
 
 export default class App extends Component {
@@ -13,7 +15,8 @@ export default class App extends Component {
     return (
       <React.Fragment>
           <p>IM learning react.</p>
-          <Todos todos={this.state.todos} />
+          {/* <Todos todos={this.state.todos} /> */}
+          <Game game={this.state.game}/>
       </React.Fragment>
           
       
