@@ -7,7 +7,9 @@ export default class Game extends Component {
     this.state = {
       board: Array(9).fill(null),
       player: null,
-      winnerplayer: null
+      winnerplayer: null,
+      // define the state to use it at render component
+      // yolo: null,
     }
   
   }
@@ -33,11 +35,16 @@ export default class Game extends Component {
       if (board[a] && board[a] === board[b] && board[a] === board[c]) {
         alert('We have a winner');
 
-         let yolo = winCombinations[index]
-
+        // define the winning function to apply css once call 
+        // for instance once the winner combo is call, it would highlight
+         let yolo = () => winCombinations[index]
+        console.log("winning combo")
         console.log(yolo)
+
         this.setState({
-          winnerplayer: this.state.player
+          winnerplayer: this.state.player,
+          // define the second state so it can reset after every game
+          // yolo: this.state.yolo
         })
       }
     }
@@ -50,7 +57,7 @@ export default class Game extends Component {
         newGame[index] = this.state.player
         this.setState({
           board: newGame,
-          player: this.state.player === "X" ? "O" : "X"
+          player: this.state.player === "X" ? "O" : "X",
         })
         this.winner()
       }
@@ -72,7 +79,9 @@ export default class Game extends Component {
     this.setState({
       player: null,
       winnerplayer: null,
-      board: Array(9).fill(null)
+      board: Array(9).fill(null),
+      // reset function 
+      // yolo: null
     })
   };
  
@@ -80,8 +89,10 @@ export default class Game extends Component {
     
     return (
       <React.Fragment>
-        
+        {/* the function needs to be call and in-line style gets applied */}
+      <div style={{color: 'yellow'}}> {this.yolo} </div>
 
+       
         <h1>Tic Tac Toe App</h1>
         
         

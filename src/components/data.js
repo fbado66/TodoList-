@@ -2,7 +2,7 @@ export const todos = [
   {
     id: 1,
     title: 'First task',
-    completed: false
+    completed: true
   },
   {
     id: 2,
