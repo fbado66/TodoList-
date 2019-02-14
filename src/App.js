@@ -4,6 +4,7 @@ import {todos} from './components/data'
 import Game from './components/Game'
 import Practice from './components/Practice'
 import AddTodos from './components/AddTodos'
+import uuid from 'uuid'
 
 import './App.css';
 
@@ -26,12 +27,22 @@ export default class App extends Component {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)]})
   }
 
+  AddTodos = (title) => {
+    const newTodo = {
+      // uuid generate random new ids 
+      id: uuid.v4(),
+      title: title,
+      completed: false
+    }
+    this.setState ({ todos: [...this.state.todos, newTodo]})
+  }
+
   render() {
     return (
       <React.Fragment>
         {/* <Practice /> */}
           <p>IM learning react.</p>
-          <AddTodos />
+          <AddTodos AddTodos={this.AddTodos}/>
           <Todos todos = {this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />
           <Game game={this.state.game}/>
           
